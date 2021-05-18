@@ -22,7 +22,7 @@ export default {
     'contributors': [
         "Augus"
     ],
-    'date': "2021-05-18T09:33:08.000Z",
+    'date': "2021-05-18T09:42:29.000Z",
     'updated': null,
     'excerpt': "",
     'cover': undefined,

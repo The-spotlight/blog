@@ -6,7 +6,7 @@ export default {
     'outputPath': "links/index.html",
     'title': "友情链接",
     'content': React.createElement("article", { dangerouslySetInnerHTML: {
-            __html: '<h1>友情链接</h1>\n<ul>\n<li><a href="https://suying222.net/">速鹰666</a></li>\n</ul>'
+            __html: '<h1>友情链接</h1>\n<ul>\n<li><a href="https://suying222.net/">速鹰666</a></li>\n<li><a href="https://feiyu100.cn/home">飞鱼盘搜</a></li>\n</ul>'
         } }),
     'head': null,
     'script': React.createElement(React.Fragment, null,
@@ -15,16 +15,16 @@ export default {
         React.createElement("script", { src: "/blog/index.js", type: "module" })),
     'contentTitle': React.createElement("h1", { key: "0" }, "\u53CB\u60C5\u94FE\u63A5"),
     'contentBody': React.createElement("article", { dangerouslySetInnerHTML: {
-            __html: '<ul>\n<li><a href="https://suying222.net/">速鹰666</a></li>\n</ul>'
+            __html: '<ul>\n<li><a href="https://suying222.net/">速鹰666</a></li>\n<li><a href="https://feiyu100.cn/home">飞鱼盘搜</a></li>\n</ul>'
         } }),
     'toc': null,
     'author': "Augus",
     'contributors': [
         "Augus"
     ],
-    'date': "2021-05-18T09:33:08.000Z",
+    'date': "2021-05-18T09:42:29.000Z",
     'updated': null,
-    'excerpt': " - 速鹰666",
+    'excerpt': " - 速鹰666 - 飞鱼盘搜",
     'cover': undefined,
     'blog': {
         "isPost": false,
