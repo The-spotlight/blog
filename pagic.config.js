@@ -1,6 +1,7 @@
 export default {
     srcDir: 'src',
     theme: 'blog',
+    root: '/blog/',
     plugins: ['blog'],
     title: 'Augus的博客',
     description: '欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。',
@@ -42,7 +43,6 @@ export default {
         social: {
             github: 'The-spotlight/blog',
             email: 'wei1129@gmail.com',
-            twitter: '',
         }
     }
 };

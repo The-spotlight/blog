@@ -1,4 +1,4 @@
-import projectConfig from '/pagic.config.js';
+import projectConfig from '/blog/pagic.config.js';
 export default {
     config: { "root": "/", ...projectConfig, branch: 'master' },
     'pagePath': "tags/plugin/",
@@ -8,16 +8,16 @@ export default {
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { src: "https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js" }),
         React.createElement("script", { src: "https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js" }),
-        React.createElement("script", { src: "/index.js", type: "module" })),
+        React.createElement("script", { src: "/blog/index.js", type: "module" })),
     'title': "plugin",
     'content': null,
     'blog': {
         "isPost": false,
         "posts": [
             {
-                "pagePath": "posts/2016_summery.md",
+                "pagePath": "posts/ideaVim.md",
                 "title": "ideaVim",
-                "link": "posts/2016_summery.html",
+                "link": "posts/ideaVim.html",
                 "date": "2021-05-16T00:00:00.000Z",
                 "updated": null,
                 "author": "Augus",
