@@ -6,7 +6,7 @@ export default {
     'outputPath': "posts/ideaVim.html",
     'title': "ideaVim",
     'content': React.createElement("article", { dangerouslySetInnerHTML: {
-            __html: '<h1>ideaVim</h1>\n<blockquote>\n<p>用于基于IntelliJ平台的IDE的Vim仿真插件。</p>\n</blockquote>\n<h2 id="%E6%BA%90%E8%B5%B7">源起<a class="anchor" href="#%E6%BA%90%E8%B5%B7">§</a></h2>\n<p>平常总喜欢喜欢看一些idea插件，</p>\n<p>尤其是看到一些热门的插件，总是想去尝试。</p>\n<p>ideaVim就是我最喜欢的插件之一, 它可以很好的提高你的代码效率，</p>\n<p>vim语法可以通过键盘完成大部分操作，摆脱鼠标和键盘之间来回切换的桎梏。</p>\n<h2 id="vim%E8%AF%AD%E6%B3%95">vim语法<a class="anchor" href="#vim%E8%AF%AD%E6%B3%95">§</a></h2>\n<blockquote>\n<p>动作 -- 指示 -- 标记</p>\n</blockquote>\n<p>比如说选择一个单词，只需按下 vaw 就可以选中当前单词,</p>\n<p>选择大括号中的内容，va{</p>\n<p><img src="../assets/ideaVim/vim_chart.png" alt="vim"></p>'
+            __html: '<h1>ideaVim</h1>\n<blockquote>\n<p>用于基于IntelliJ平台的IDE的Vim仿真插件。</p>\n</blockquote>\n<h2 id="%E6%BA%90%E8%B5%B7">源起<a class="anchor" href="#%E6%BA%90%E8%B5%B7">§</a></h2>\n<p>平常总喜欢喜欢看一些idea插件，</p>\n<p>尤其是看到一些热门的插件，总是想去尝试。</p>\n<p>ideaVim就是我最喜欢的插件之一, 它可以很好的提高你的代码效率，</p>\n<p>vim语法可以通过键盘完成大部分操作，摆脱鼠标和键盘之间来回切换的桎梏。</p>\n<h2 id="vim%E8%AF%AD%E6%B3%95">vim语法<a class="anchor" href="#vim%E8%AF%AD%E6%B3%95">§</a></h2>\n<blockquote>\n<p>动作 -- 指示 -- 标记</p>\n</blockquote>\n<p>比如说选择一个单词，只需按下 vaw 就可以选中当前单词,</p>\n<p>选择大括号中的内容，va{</p>\n<p><img src="../assets/ideaVim/vim_chart.png" alt="vim_chart"></p>'
         } }),
     'head': null,
     'script': React.createElement(React.Fragment, null,
@@ -15,7 +15,7 @@ export default {
         React.createElement("script", { src: "/blog/index.js", type: "module" })),
     'contentTitle': React.createElement("h1", { key: "0" }, "ideaVim"),
     'contentBody': React.createElement("article", { dangerouslySetInnerHTML: {
-            __html: '<blockquote>\n<p>用于基于IntelliJ平台的IDE的Vim仿真插件。</p>\n</blockquote>\n<h2 id="%E6%BA%90%E8%B5%B7">源起<a class="anchor" href="#%E6%BA%90%E8%B5%B7">§</a></h2>\n<p>平常总喜欢喜欢看一些idea插件，</p>\n<p>尤其是看到一些热门的插件，总是想去尝试。</p>\n<p>ideaVim就是我最喜欢的插件之一, 它可以很好的提高你的代码效率，</p>\n<p>vim语法可以通过键盘完成大部分操作，摆脱鼠标和键盘之间来回切换的桎梏。</p>\n<h2 id="vim%E8%AF%AD%E6%B3%95">vim语法<a class="anchor" href="#vim%E8%AF%AD%E6%B3%95">§</a></h2>\n<blockquote>\n<p>动作 -- 指示 -- 标记</p>\n</blockquote>\n<p>比如说选择一个单词，只需按下 vaw 就可以选中当前单词,</p>\n<p>选择大括号中的内容，va{</p>\n<p><img src="../assets/ideaVim/vim_chart.png" alt="vim"></p>'
+            __html: '<blockquote>\n<p>用于基于IntelliJ平台的IDE的Vim仿真插件。</p>\n</blockquote>\n<h2 id="%E6%BA%90%E8%B5%B7">源起<a class="anchor" href="#%E6%BA%90%E8%B5%B7">§</a></h2>\n<p>平常总喜欢喜欢看一些idea插件，</p>\n<p>尤其是看到一些热门的插件，总是想去尝试。</p>\n<p>ideaVim就是我最喜欢的插件之一, 它可以很好的提高你的代码效率，</p>\n<p>vim语法可以通过键盘完成大部分操作，摆脱鼠标和键盘之间来回切换的桎梏。</p>\n<h2 id="vim%E8%AF%AD%E6%B3%95">vim语法<a class="anchor" href="#vim%E8%AF%AD%E6%B3%95">§</a></h2>\n<blockquote>\n<p>动作 -- 指示 -- 标记</p>\n</blockquote>\n<p>比如说选择一个单词，只需按下 vaw 就可以选中当前单词,</p>\n<p>选择大括号中的内容，va{</p>\n<p><img src="../assets/ideaVim/vim_chart.png" alt="vim_chart"></p>'
         } }),
     'toc': React.createElement("nav", { key: "0", className: "toc" },
         React.createElement("ol", null,
