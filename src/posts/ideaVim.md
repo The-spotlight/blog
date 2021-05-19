@@ -30,4 +30,4 @@ vim语法可以通过键盘完成大部分操作，摆脱鼠标和键盘之间�
 
 选择大括号中的内容，va{
 
-![vim](../assets/ideaVim/vim_chart.png)
+![vim_chart](../assets/ideaVim/vim_chart.png)
