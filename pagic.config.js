@@ -1,5 +1,6 @@
 export default {
     srcDir: 'src',
+    outDir: 'dist',
     theme: 'blog',
     root: '/blog/',
     plugins: ['blog'],
