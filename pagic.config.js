@@ -10,32 +10,32 @@ export default {
     nav: [
         {
             text: '首页',
-            link: '/',
+            link: '/blog/',
             icon: 'czs-home-l'
         },
         {
             text: '分类',
-            link: '/categories/',
+            link: '/blog/categories/',
             icon: 'czs-category-l'
         },
         {
             text: '标签',
-            link: '/tags/',
+            link: '/blog/tags/',
             icon: 'czs-tag-l'
         },
         {
             text: '关于',
-            link: '/about/',
+            link: '/blog/about/',
             icon: 'czs-about-l'
         },
         {
             text: '归档',
-            link: '/archives/',
+            link: '/blog/archives/',
             icon: 'czs-box-l'
         },
         {
             text: '友情链接',
-            link: '/links/',
+            link: '/blog/links/',
             icon: 'czs-link-l'
         }
     ],
