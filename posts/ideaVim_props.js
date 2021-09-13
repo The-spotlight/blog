@@ -42,6 +42,19 @@ export default {
         "isPost": true,
         "posts": [
             {
+                "pagePath": "posts/Maintaining Separation of Concerns Through Angular Directives.md",
+                "title": "Maintaining Separation of Concerns Through Angular Directives",
+                "link": "posts/Maintaining Separation of Concerns Through Angular Directives.html",
+                "date": "2021-09-13T02:33:52.000Z",
+                "updated": null,
+                "author": "Augus",
+                "contributors": [
+                    "Augus"
+                ],
+                "excerpt": "We have a date picker component in our application. We send an event each time a user changes the date to our analytics provider. We have one use of it so far, so the analytics code was inside the component tha...",
+                "cover": "https://miro.medium.com/max/1400/1*z72M1pr8-q5k2QJ4SaUR8g.png"
+            },
+            {
                 "pagePath": "posts/ideaVim.md",
                 "title": "ideaVim",
                 "link": "posts/ideaVim.html",

@@ -1,0 +1,80 @@
+<!doctype html><html class="" data-reactroot=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" property="og:title" content="Maintaining Separation of Concerns Through Angular Directives · Augus的博客"/><meta data-react-helmet="true" property="og:description" content="欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。"/><meta data-react-helmet="true" property="og:type" content="article"/><meta data-react-helmet="true" name="twitter:card" content="summary"/>
+<title data-react-helmet="true">Maintaining Separation of Concerns Through Angular Directives · Augus的博客</title>
+<link data-react-helmet="true" rel="stylesheet" href="/blog/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/blog/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/blog/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><a class="czs-menu-l show_on_mobile aside_button_open" href="#" style="background-image:url(&quot;/blog/assets/czs-menu-l.svg&quot;)"></a><a class="show_on_mobile aside_button_text" href="/blog/">Augus的博客</a><aside class="hide_on_mobile"><div class="aside_card"><a class="czs-menu-l show_on_mobile aside_button_close" href="#" style="background-image:url(&quot;/blog/assets/czs-close-l.svg&quot;)"></a><h1><a href="/blog/">Augus的博客</a></h1><p class="description">欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。</p><ul class="social list_style_none"><li class="flex_center"><a class="czs-github-logo" href="https://github.com/The-spotlight/blog" target="_blank" style="background-image:url(&quot;/blog/assets/czs-github-logo.svg&quot;)"></a></li><li class="flex_center"><a class="czs-message-l" href="mailto:wei1129@gmail.com" target="_blank" style="background-image:url(&quot;/blog/assets/czs-message-l.svg&quot;)"></a></li><li style="flex-grow:1"></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/blog/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/blog/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/blog/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/blog/assets/czs-moon-l.svg&quot;)"></span></li></ul><nav><ul class="menu list_style_none"><li><a class="flex_center" href="/blog/"><span class="czs-home-l" style="background-image:url(&quot;/blog/assets/czs-home-l.svg&quot;)"></span>首页</a></li><li><a class="flex_center" href="/blog/categories/"><span class="czs-category-l" style="background-image:url(&quot;/blog/assets/czs-category-l.svg&quot;)"></span>分类</a></li><li><a class="flex_center" href="/blog/tags/"><span class="czs-tag-l" style="background-image:url(&quot;/blog/assets/czs-tag-l.svg&quot;)"></span>标签</a></li><li><a class="flex_center" href="/blog/about/"><span class="czs-about-l" style="background-image:url(&quot;/blog/assets/czs-about-l.svg&quot;)"></span>关于</a></li><li><a class="flex_center" href="/blog/archives/"><span class="czs-box-l" style="background-image:url(&quot;/blog/assets/czs-box-l.svg&quot;)"></span>归档</a></li><li><a class="flex_center" href="/blog/links/"><span class="czs-link-l" style="background-image:url(&quot;/blog/assets/czs-link-l.svg&quot;)"></span>友情链接</a></li></ul></nav></div></aside><section class="main"><h1>Maintaining Separation of Concerns Through Angular Directives</h1><div class="main_post_meta"><time dateTime="Mon Sep 13 2021 02:33:52 GMT+0000 (UTC)">2021-09-13</time> · <!-- -->Augus</div><article><p><img src="https://miro.medium.com/max/1400/1*z72M1pr8-q5k2QJ4SaUR8g.png" alt="img"></p>
+<p>We have a date picker component in our application. We send an event each time a user changes the date to our analytics provider. We have one use of it so far, so the analytics code was inside the component that uses it:</p>
+<pre class="language-autoit"><code class="language-autoit">import { UntilDestroy<span class="token punctuation">,</span> untilDestroyed } from <span class="token string">'@ngneat/until-destroyed'</span><span class="token comment">;</span>
+
+@<span class="token function">UntilDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+class FooComponent {
+  timespanControl <span class="token operator">=</span> new <span class="token function">FormControl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">;</span>
+
+  <span class="token function">ngOnInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> {
+    this<span class="token punctuation">.</span>timespanControl<span class="token punctuation">.</span>valueChanges
+      <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">untilDestroyed</span><span class="token punctuation">(</span>this<span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span>{ preset }<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> {
+        this<span class="token punctuation">.</span>analyticsService<span class="token punctuation">.</span><span class="token function">track</span><span class="token punctuation">(</span><span class="token string">'timespan-filter apply'</span><span class="token punctuation">,</span> {
+          value<span class="token punctuation">:</span> preset<span class="token punctuation">,</span>
+        }<span class="token punctuation">)</span><span class="token comment">;</span>
+      }<span class="token punctuation">)</span><span class="token comment">;</span>
+  }
+}
+</code></pre>
+<p>However, now we have more places where we must use this code, and we don’t want to duplicate it everywhere. One might think that the logic could be incorporated into the date picker component and passed as input:</p>
+<pre class="language-autoit"><code class="language-autoit">class DatePickerComponent {
+  @<span class="token function">Input</span><span class="token punctuation">(</span><span class="token punctuation">)</span> analyticsContext<span class="token punctuation">:</span> string<span class="token comment">;</span>
+   
+  <span class="token function">constructor</span><span class="token punctuation">(</span>private analyticsService<span class="token punctuation">:</span> AnalyticsService<span class="token punctuation">)</span> {}
+
+  <span class="token function">apply</span><span class="token punctuation">(</span><span class="token punctuation">)</span> {
+    this<span class="token punctuation">.</span>analyticsService<span class="token punctuation">.</span><span class="token function">track</span><span class="token punctuation">(</span><span class="token string">'timespan-filter apply'</span><span class="token punctuation">,</span> {
+      context<span class="token punctuation">:</span> this<span class="token punctuation">.</span>analyticsContext<span class="token punctuation">,</span>
+      value<span class="token punctuation">:</span> this<span class="token punctuation">.</span>preset<span class="token punctuation">,</span>
+    }<span class="token punctuation">)</span><span class="token comment">;</span>
+
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  }
+}
+</code></pre>
+<p>Indeed, that would work, but it’s not the ideal design. <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">Separation of concerns</a> means that the date picker component isn’t concerned with the analytics and doesn’t need to know anything about it.</p>
+<p>Furthermore, in this case, we have control over the source code since it’s an internal component, but what if it was a third-party component?</p>
+<p>A better option here would be to use Angular directives. Let’s create a directive that obtains a reference to the form control via DI, subscribes to value changes, and fires the analytics event:</p>
+<pre class="language-autoit"><code class="language-autoit">
+@<span class="token function">UntilDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+@<span class="token function">Directive</span><span class="token punctuation">(</span>{
+  selector<span class="token punctuation">:</span> <span class="token string">'[datePickerAnalytics]'</span><span class="token punctuation">,</span>
+}<span class="token punctuation">)</span>
+export class DatePickerAnalyticsDirective implements OnInit {
+  @<span class="token function">Input</span><span class="token punctuation">(</span><span class="token string">'datePickerAnalytics'</span><span class="token punctuation">)</span> analyticsContext<span class="token punctuation">:</span> string<span class="token comment">;</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span>
+    private dateFormControl<span class="token punctuation">:</span> NgControl<span class="token punctuation">,</span>
+    private analyticsService<span class="token punctuation">:</span> AnalyticsService
+  <span class="token punctuation">)</span> {}
+
+  <span class="token function">ngOnInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> {
+    this<span class="token punctuation">.</span>dateFormControl
+      <span class="token punctuation">.</span>control<span class="token punctuation">.</span>valueChanges<span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">untilDestroyed</span><span class="token punctuation">(</span>this<span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span>{ preset }<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> {
+        this<span class="token punctuation">.</span>analyticsService<span class="token punctuation">.</span><span class="token function">track</span><span class="token punctuation">(</span>
+          <span class="token string">'timespan-filter apply'</span><span class="token punctuation">,</span>
+          {
+            value<span class="token punctuation">:</span> preset<span class="token punctuation">,</span>
+            context<span class="token punctuation">:</span> this<span class="token punctuation">.</span>analyticsContext
+          }
+        <span class="token punctuation">)</span><span class="token comment">;</span>
+      }<span class="token punctuation">)</span><span class="token comment">;</span>
+  }
+}
+</code></pre>
+<p>We can now use it every time we use the date picker:</p>
+<pre class="language-autoit"><code class="language-autoit"><span class="token operator">&lt;</span>date<span class="token operator">-</span>picker <span class="token punctuation">[</span>formControl<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"control"</span> datePickerAnalytics<span class="token operator">=</span><span class="token string">"fooPage"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>date<span class="token operator">-</span>picker<span class="token operator">></span>
+</code></pre></article></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/blog/index.js"></script></body></html>
